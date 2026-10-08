@@ -1,6 +1,6 @@
-# Sentinel Console
+AI Compliance Check System
 
-Sentinel Console is a Flask-based web application that helps security and system administrators review Linux system snapshots and turn them into a compliance-style assessment. The app accepts raw command output, parses the important sections, and uses the Gemini API to identify compliance issues, recommendations, and summary findings.
+AI Compliance Check System is a Flask-based web application that helps security and system administrators review Linux system snapshots and turn them into a compliance-style assessment. The app accepts raw command output, parses the important sections, and uses the Gemini API to identify compliance issues, recommendations, and summary findings.
 
 This project is designed to take a pasted system snapshot such as `uname -a`, `ip addr`, `lscpu`, `free -h`, `df -h`, and `uptime` output and convert it into a readable report.
 
