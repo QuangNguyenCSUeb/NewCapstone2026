@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sentinel Console</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Sentinel Console home">
+        <span class="brand-mark">S</span>
+        <span>Sentinel <em>Console</em></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a class="active" href="/">Dashboard</a>
+        <a href="/report">History</a>
+      </nav>
+      <div class="connection"><span class="pulse"></span><span id="connectionText">Checking API</span></div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Compliance workspace / live view</p>
+          <h1>Know what is running<br><span>before it becomes a problem.</span></h1>
+          <p class="hero-copy">Paste a Linux system snapshot and turn raw output into a clear, actionable compliance report.</p>
+        </div>
+        <div class="hero-stamp"><strong id="scanCount">--</strong><span>scans archived</span></div>
+      </section>
+
+      <section class="workspace-grid">
+        <article class="panel intake-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">01 / Collect</p><h2>System snapshot</h2></div>
+            <span class="panel-icon">+</span>
+          </div>
+          <p class="muted">Paste the output from your diagnostic commands below.</p>
+          <form id="scanForm">
+            <label for="rawOutput">Raw command output</label>
+            <textarea id="rawOutput" minlength="20" required placeholder="OS:\nLinux ubuntu 5.15.0-107-generic #117-Ubuntu SMP Tue Apr 30 17:03:15 UTC 2024 x86_64 GNU/Linux\n\nCPU:\nArchitecture: x86_64\nModel name: Intel(R) Xeon(R) CPU @ 2.20GHz\n\nMEMORY:\nMemTotal: 16384256 kB\n\nDISK:\nFilesystem     Size  Used Avail Use% Mounted on\n/dev/sda1      20G   9G   10G  47% /\n\nNETWORK:\n2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500\n    inet 192.168.1.25/24\n\nUPTIME:\n18:00:01 up 2 days, 4:32, 1 user, load average: 0.18, 0.27, 0.30"></textarea>
+            <div class="form-footer">
+              <span id="formMessage" class="form-message">Ready for a new scan</span>
+              <button type="submit" class="button button-primary"><span id="buttonText">Analyze snapshot</span><span class="arrow">↗</span></button>
+            </div>
+          </form>
+        </article>
+
+        <article class="panel status-panel">
+          <div class="panel-heading"><div><p class="eyebrow">02 / Inspect</p><h2>Latest posture</h2></div><span class="panel-icon">◌</span></div>
+          <div id="emptyState" class="empty-state"><span class="empty-orbit">◎</span><strong>No scan loaded</strong><span>Your latest assessment will appear here.</span></div>
+          <div id="summaryState" class="summary-state hidden">
+            <div class="score-row"><div><span class="muted">Overall compliance</span><strong id="scoreText">--</strong></div><div class="score-ring" id="scoreRing"><span id="scoreValue">--</span></div></div>
+            <div class="meter"><span id="scoreMeter"></span></div>
+            <p id="summaryText" class="summary-copy"></p>
+            <div class="stat-row"><div><strong id="passedCount">0</strong><span>Passed</span></div><div><strong id="failedCount">0</strong><span>Needs attention</span></div><div><strong id="totalCount">0</strong><span>Total checks</span></div></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="results-section">
+        <div class="section-heading"><div><p class="eyebrow">03 / Resolve</p><h2>Control checks</h2></div><span id="lastUpdated" class="muted">No assessment yet</span></div>
+        <div class="table-wrap">
+          <table><thead><tr><th>Control</th><th>Observed value</th><th>Result</th><th>Recommendation</th></tr></thead><tbody id="resultsBody"><tr><td colspan="4" class="table-empty">Run a scan to populate control checks.</td></tr></tbody></table>
+        </div>
+      </section>
+    </main>
+    <footer><span>Sentinel Console</span><span>Local analysis workspace</span></footer>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

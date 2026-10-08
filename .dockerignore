@@ -1,0 +1,10 @@
+.git
+.env
+**/.env
+api_key
+**/api_key
+*.db
+**/*.db
+**/__pycache__
+**/*.py[cod]
+backend/venv
